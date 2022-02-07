@@ -6,7 +6,7 @@ const userRoutes = require('./routes/userRoutes');
 const courseRoutes = require('./routes/courseRoutes');
 
 dotenv.config();
-const secret = process.env.CONNECTION_MONGODB;
+const secret = process.env.CONNECTION_STRING;
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -46,6 +46,7 @@ app.use((error, req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-	res.send('Hosted on heroku');
+	res.send('Hosted');
 })
+
 app.listen(port, () => console.log(`Server running at port ${port}`))
