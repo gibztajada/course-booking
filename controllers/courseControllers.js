@@ -103,7 +103,8 @@ exports.archiveCourse = (req,res) => {
 	const { error } = validate.validateArchive(req.body);
 	if (error) return res.status(400).send(error.details[0].message);
 
-	Course.findById(req.params.courseId).then(result => {
+	Course.findById(req.params.courseId)
+		.then(result => {
 
 			result.isActive = req.body.isActive
 
@@ -117,6 +118,7 @@ exports.archiveCourse = (req,res) => {
 	
 		})
 	} )
+		.catch(err => res.send(err.message));
 
 }
 

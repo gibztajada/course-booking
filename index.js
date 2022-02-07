@@ -46,6 +46,6 @@ app.use((error, req, res, next) => {
 })
 
 app.get('/', (req, res) => {
-	res.send('Hosted');
+	res.send('Hosted on heroku');
 })
 app.listen(port, () => console.log(`Server running at port ${port}`))

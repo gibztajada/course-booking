@@ -14,7 +14,7 @@ router.post('/register', userController.registerUser);
 router.post('/login', userController.loginUser);
 
 // Retrieve specific details
-router.post("/details", userController.getProfile);
+router.post("/details", auth.verify,userController.getProfile);
 
 
 module.exports = router;
