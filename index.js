@@ -33,20 +33,23 @@ db.once('open', () => console.log("Successfully connected to MongoDB"));
 app.use('/users', userRoutes);
 app.use('/courses', courseRoutes);
 
-//error handlers
-// app.use((req, res, next) => {
-// 	const error = new Error('Not found');
-// 	error.status = 404;
-// 	next(error);
-// })
 
-// app.use((error, req, res, next) => {
-// 	res.status(error.status || 500);
-// 	res.send(`Error: ${error.message}`);
-// })
 
 app.get('/', (req, res) => {
 	res.send('Hosted on heroku');
+})
+
+
+//error handlers
+app.use((req, res, next) => {
+	const error = new Error('Not found');
+	error.status = 404;
+	next(error);
+})
+
+app.use((error, req, res, next) => {
+	res.status(error.status || 500);
+	res.send(`Error: ${error.message}`);
 })
 
 app.listen(port, () => console.log(`Server running at port ${port}`))
